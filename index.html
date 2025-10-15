@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Banco Bolivariano</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      background-color: #0044cc;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      color: #ffffff;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    img {
+      width: 160px;
+      height: auto;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+    }
+
+    .text {
+      font-size: 1.1rem;
+      font-weight: 400;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+      animation-delay: 0.6s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-out {
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <img src="512x512bb.jpg" alt="Logo Banco Bolivariano">
+    <div class="text">Redirigiendo a la página oficial del Banco Bolivariano...</div>
+  </div>
+
+  <script>
+    const DESTINO = ""; // 🔗 Aquí colocas tu enlace final
+    const TIEMPO_ESPERA = 10000; // 10 segundos
+
+    const contenedor = document.getElementById("container");
+
+    setTimeout(() => {
+      contenedor.classList.add("fade-out");
+      setTimeout(() => {
+        if (DESTINO && DESTINO.trim() !== "") {
+          window.location.href = DESTINO;
+        } else {
+          console.warn("⚠️ No se ha configurado la URL de destino (const DESTINO).");
+        }
+      }, 1500);
+    }, TIEMPO_ESPERA);
+  </script>
+</body>
+</html>
